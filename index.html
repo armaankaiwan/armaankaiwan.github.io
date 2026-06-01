@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucky</title>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Suisse+Intl:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --black: #111111;
+      --mid: #888888;
+      --light: #dddddd;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'IM Fell English', Georgia, serif;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 28px 48px;
+      background: var(--white);
+    }
+
+    nav .site-title {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav .nav-links a:hover { color: var(--black); }
+
+    /* ── MAIN ── */
+    main {
+      padding-top: 110px;
+      max-width: 640px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-bottom: 120px;
+    }
+
+    /* ── ENTRY ── */
+    .entry {
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.6s forwards;
+    }
+
+    .entry:nth-child(1) { animation-delay: 0.05s; }
+    .entry:nth-child(2) { animation-delay: 0.15s; }
+    .entry:nth-child(3) { animation-delay: 0.25s; }
+    .entry:nth-child(4) { animation-delay: 0.35s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .entry-date {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 0.78rem;
+      color: var(--mid);
+      margin-bottom: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .entry-title {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      margin-bottom: 14px;
+      letter-spacing: 0.01em;
+    }
+
+    .entry-title a {
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .entry-title a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .entry-body {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 18px;
+    }
+
+    .entry-body p + p { margin-top: 12px; }
+
+    .entry-img {
+      width: 100%;
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+
+    .entry-img img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .entry-img-caption {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 0.75rem;
+      color: var(--mid);
+      margin-top: 6px;
+    }
+
+    .entry-tag {
+      display: inline-block;
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 0.75rem;
+      color: var(--mid);
+      border-bottom: 1px solid var(--light);
+      padding-bottom: 1px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .entry-tag:hover { color: var(--black); border-color: var(--black); }
+
+    .divider {
+      border: none;
+      text-align: left;
+      margin-bottom: 80px;
+      font-family: 'IM Fell English', serif;
+      font-size: 0.85rem;
+      color: var(--light);
+      letter-spacing: 0.15em;
+    }
+
+    .divider::after {
+      content: '- - - - - - - - - - - - - - -';
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--light);
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 0.78rem;
+      color: var(--mid);
+    }
+
+    footer a { color: var(--mid); text-decoration: none; }
+    footer a:hover { color: var(--black); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="site-title" href="index.html">Lucky</a>
+    <ul class="nav-links">
+      <li><a href="index.html">all</a></li>
+      <li><a href="#">art</a></li>
+      <li><a href="#">music</a></li>
+      <li><a href="#">journal</a></li>
+      <li><a href="#">vintage</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ENTRY 1 -->
+    <article class="entry">
+      <div class="entry-date">06 01 2026</div>
+      <h2 class="entry-title"><a href="#">on starting things</a></h2>
+      <div class="entry-body">
+        <p>i have been thinking about the difference between starting something and beginning something. starting feels accidental. beginning feels chosen.</p>
+        <p>this is a beginning.</p>
+      </div>
+      <div class="entry-img">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="mountain light" />
+        <div class="entry-img-caption">somewhere i want to be</div>
+      </div>
+      <span class="entry-tag">journal</span>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- ENTRY 2 -->
+    <article class="entry">
+      <div class="entry-date">05 28 2026</div>
+      <h2 class="entry-title"><a href="#">luckyvintageny — first drop</a></h2>
+      <div class="entry-body">
+        <p>spent the week going through pieces. there is something about holding an old jacket and wondering where it has already been.</p>
+      </div>
+      <div class="entry-img">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="vintage clothing" />
+        <div class="entry-img-caption">the rack</div>
+      </div>
+      <span class="entry-tag">vintage</span>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- ENTRY 3 -->
+    <article class="entry">
+      <div class="entry-date">05 20 2026</div>
+      <h2 class="entry-title"><a href="#">training notes</a></h2>
+      <div class="entry-body">
+        <p>muay thai on tuesday. my shins are adjusting. my patience is also adjusting.</p>
+        <p>i like that martial arts is honest. your body either does the thing or it does not.</p>
+      </div>
+      <span class="entry-tag">martial arts</span>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- ENTRY 4 -->
+    <article class="entry">
+      <div class="entry-date">05 14 2026</div>
+      <h2 class="entry-title"><a href="#">a song i made</a></h2>
+      <div class="entry-body">
+        <p>recorded something in my room at 1am. not sure what it is yet. posting it anyway because i think keeping things to yourself until they are perfect is a trap.</p>
+      </div>
+      <span class="entry-tag">music</span>
+    </article>
+
+  </main>
+
+  <footer>
+    Lucky &nbsp;·&nbsp; <a href="#">luckyvintageny</a> &nbsp;·&nbsp; all rights reserved
+  </footer>
+
+</body>
+</html>
