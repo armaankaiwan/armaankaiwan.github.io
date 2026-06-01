@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="format-detection" content="telephone=no" />
+  <meta property="og:title" content="Lucky" />
+  <meta property="og:description" content="A personal blog." />
+  <meta property="og:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYzMCIgdmlld0JveD0iMCAwIDEyMDAgNjMwIj4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9IndoaXRlIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzNjAiIGZvbnQtc2l6ZT0iMzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmaWxsPSJibGFjayI+4pmjPC90ZXh0Pgo8L3N2Zz4=" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lucky</title>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet" />
@@ -18,9 +21,7 @@
 
     /* ── LANDING ── */
     #landing {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      display: block;
       min-height: 100vh;
       padding: 52px 56px;
     }
@@ -31,18 +32,11 @@
       font-weight: 400;
       line-height: 1;
       color: #111;
+      margin-bottom: 0;
     }
 
-    .landing-bottom {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .month-list {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 6px;
+    .landing-month {
+      margin-top: 2px;
     }
 
     .month-item {
@@ -228,10 +222,8 @@
   <!-- LANDING PAGE -->
   <div id="landing">
     <div class="landing-top">Lucky</div>
-    <div class="landing-bottom">
-      <div class="month-list">
-        <button class="month-item" onclick="showBlog('June 2026')">→ June 2026</button>
-      </div>
+    <div class="landing-month">
+      <button class="month-item" onclick="showBlog('June 2026')">→ June 2026</button>
     </div>
   </div>
 
