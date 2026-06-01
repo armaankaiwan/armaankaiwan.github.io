@@ -4,27 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lucky</title>
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Suisse+Intl:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --white: #ffffff;
-      --black: #111111;
-      --mid: #888888;
-      --light: #dddddd;
-    }
-
-    html { font-size: 16px; }
-
     body {
-      background: var(--white);
-      color: var(--black);
-      font-family: 'IM Fell English', Georgia, serif;
+      background: #ffffff;
+      color: #111;
       min-height: 100vh;
     }
 
-    /* ── NAV ── */
+    /* ── LANDING ── */
+    #landing {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 52px 56px;
+    }
+
+    .landing-top {
+      font-family: 'IM Fell English', serif;
+      font-size: 96px;
+      font-weight: 400;
+      line-height: 1;
+      color: #111;
+    }
+
+    .landing-bottom {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .month-list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .month-item {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: #111;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: opacity 0.15s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .month-item:hover { opacity: 0.4; }
+
+    /* ── BLOG PAGE ── */
+    #blog { display: none; }
+
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -33,35 +69,17 @@
       justify-content: space-between;
       align-items: baseline;
       padding: 28px 48px;
-      background: var(--white);
+      background: #fff;
     }
 
     nav .site-title {
       font-family: 'IM Fell English', serif;
       font-size: 1.15rem;
-      letter-spacing: 0.02em;
       text-decoration: none;
-      color: var(--black);
+      color: #111;
+      cursor: pointer;
     }
 
-    nav .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    nav .nav-links a {
-      font-family: 'IM Fell English', serif;
-      font-style: italic;
-      font-size: 0.85rem;
-      color: var(--mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    nav .nav-links a:hover { color: var(--black); }
-
-    /* ── MAIN ── */
     main {
       padding-top: 110px;
       max-width: 640px;
@@ -71,30 +89,34 @@
       padding-bottom: 120px;
     }
 
-    /* ── ENTRY ── */
-    .entry {
-      margin-bottom: 80px;
-      opacity: 0;
-      transform: translateY(18px);
-      animation: fadeUp 0.6s forwards;
+    .month-heading {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: #bbb;
+      letter-spacing: 0.08em;
+      margin-bottom: 56px;
     }
 
-    .entry:nth-child(1) { animation-delay: 0.05s; }
-    .entry:nth-child(2) { animation-delay: 0.15s; }
-    .entry:nth-child(3) { animation-delay: 0.25s; }
-    .entry:nth-child(4) { animation-delay: 0.35s; }
+    .entry {
+      margin-bottom: 72px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.5s forwards;
+    }
+
+    .entry:nth-child(2) { animation-delay: 0.05s; }
+    .entry:nth-child(3) { animation-delay: 0.12s; }
 
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
     }
 
     .entry-date {
-      font-family: 'IM Fell English', serif;
-      font-style: italic;
-      font-size: 0.78rem;
-      color: var(--mid);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: #bbb;
       margin-bottom: 10px;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
     }
 
     .entry-title {
@@ -102,20 +124,10 @@
       font-size: 1.05rem;
       font-weight: 400;
       margin-bottom: 14px;
-      letter-spacing: 0.01em;
-    }
-
-    .entry-title a {
-      color: var(--black);
-      text-decoration: none;
-    }
-
-    .entry-title a:hover {
-      text-decoration: underline;
-      text-underline-offset: 3px;
     }
 
     .entry-body {
+      font-family: 'IM Fell English', serif;
       font-size: 0.95rem;
       line-height: 1.75;
       color: #333;
@@ -124,11 +136,53 @@
 
     .entry-body p + p { margin-top: 12px; }
 
+    .entry-body .examples {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .entry-body .ex-item {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .entry-body .ex-item .clover {
+      color: #111;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .ingredient-list {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .ingredient-item {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      font-family: 'IM Fell English', serif;
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .ingredient-item .clover {
+      color: #111;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
     .entry-img {
       width: 100%;
       display: block;
-      margin-top: 18px;
-      margin-bottom: 6px;
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
 
     .entry-img img {
@@ -137,134 +191,132 @@
       object-fit: cover;
     }
 
-    .entry-img-caption {
-      font-family: 'IM Fell English', serif;
-      font-style: italic;
-      font-size: 0.75rem;
-      color: var(--mid);
-      margin-top: 6px;
-    }
-
-    .entry-tag {
-      display: inline-block;
-      font-family: 'IM Fell English', serif;
-      font-style: italic;
-      font-size: 0.75rem;
-      color: var(--mid);
-      border-bottom: 1px solid var(--light);
-      padding-bottom: 1px;
-      margin-top: 10px;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .entry-tag:hover { color: var(--black); border-color: var(--black); }
-
     .divider {
       border: none;
-      text-align: left;
-      margin-bottom: 80px;
       font-family: 'IM Fell English', serif;
       font-size: 0.85rem;
-      color: var(--light);
+      color: #111;
       letter-spacing: 0.15em;
+      margin-bottom: 72px;
     }
 
     .divider::after {
       content: '- - - - - - - - - - - - - - -';
     }
 
-    /* ── FOOTER ── */
     footer {
       text-align: center;
       padding: 40px 24px;
-      border-top: 1px solid var(--light);
-      font-family: 'IM Fell English', serif;
-      font-style: italic;
-      font-size: 0.78rem;
-      color: var(--mid);
+      border-top: 1px solid #eee;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: #bbb;
+      letter-spacing: 0.04em;
     }
 
-    footer a { color: var(--mid); text-decoration: none; }
-    footer a:hover { color: var(--black); }
+    footer a { color: #bbb; text-decoration: none; }
+    footer a:hover { color: #111; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a class="site-title" href="index.html">Lucky</a>
-    <ul class="nav-links">
-      <li><a href="index.html">all</a></li>
-      <li><a href="#">art</a></li>
-      <li><a href="#">music</a></li>
-      <li><a href="#">journal</a></li>
-      <li><a href="#">vintage</a></li>
-    </ul>
-  </nav>
-
-  <main>
-
-    <!-- ENTRY 1 -->
-    <article class="entry">
-      <div class="entry-date">06 01 2026</div>
-      <h2 class="entry-title"><a href="#">on starting things</a></h2>
-      <div class="entry-body">
-        <p>i have been thinking about the difference between starting something and beginning something. starting feels accidental. beginning feels chosen.</p>
-        <p>this is a beginning.</p>
+  <!-- LANDING PAGE -->
+  <div id="landing">
+    <div class="landing-top">Lucky</div>
+    <div class="landing-bottom">
+      <div class="month-list">
+        <button class="month-item" onclick="showBlog('June 2026')">June 2026</button>
       </div>
-      <div class="entry-img">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="mountain light" />
-        <div class="entry-img-caption">somewhere i want to be</div>
-      </div>
-      <span class="entry-tag">journal</span>
-    </article>
+    </div>
+  </div>
 
-    <div class="divider"></div>
+  <!-- BLOG PAGE -->
+  <div id="blog">
+    <nav>
+      <span class="site-title" onclick="showLanding()">Lucky</span>
+    </nav>
 
-    <!-- ENTRY 2 -->
-    <article class="entry">
-      <div class="entry-date">05 28 2026</div>
-      <h2 class="entry-title"><a href="#">luckyvintageny — first drop</a></h2>
-      <div class="entry-body">
-        <p>spent the week going through pieces. there is something about holding an old jacket and wondering where it has already been.</p>
-      </div>
-      <div class="entry-img">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="vintage clothing" />
-        <div class="entry-img-caption">the rack</div>
-      </div>
-      <span class="entry-tag">vintage</span>
-    </article>
+    <main>
+      <div class="month-heading" id="current-month"></div>
 
-    <div class="divider"></div>
+      <!-- POST 1 -->
+      <article class="entry">
+        <div class="entry-date">06 01 2026</div>
+        <h2 class="entry-title">Hello World.</h2>
+        <div class="entry-body">
+          <p>I've been feeling very sentimental these days. Some days more than others. It's easy to forget what makes you, you.</p>
+          <p>Recently, I've been remembering through my childhood.</p>
+          <div class="examples">
+            <div class="ex-item"><span>Ex. 1) Read someone a Dr. Seuss book as a bedtime story</span></div>
+            <div class="ex-item"><span>Ex. 2) Revisited the meal that made me fall in love with cooking</span></div>
+            <div class="ex-item"><span>Ex. 3) Dug up old memories with my hometown friends</span></div>
+          </div>
+          <p style="margin-top:16px;">Through this blog I will live, and through my eyes, you will see.</p>
+        </div>
+      </article>
 
-    <!-- ENTRY 3 -->
-    <article class="entry">
-      <div class="entry-date">05 20 2026</div>
-      <h2 class="entry-title"><a href="#">training notes</a></h2>
-      <div class="entry-body">
-        <p>muay thai on tuesday. my shins are adjusting. my patience is also adjusting.</p>
-        <p>i like that martial arts is honest. your body either does the thing or it does not.</p>
-      </div>
-      <span class="entry-tag">martial arts</span>
-    </article>
+      <div class="divider"></div>
 
-    <div class="divider"></div>
+      <!-- POST 2 -->
+      <article class="entry">
+        <div class="entry-date">06 01 2026</div>
+        <h2 class="entry-title">Dad's Bagel.</h2>
+        <div class="entry-body">
+          <p>Dad made me this for the first time many years ago. I'll never forget. Now I make it when the stars in the fridge align.</p>
+        </div>
 
-    <!-- ENTRY 4 -->
-    <article class="entry">
-      <div class="entry-date">05 14 2026</div>
-      <h2 class="entry-title"><a href="#">a song i made</a></h2>
-      <div class="entry-body">
-        <p>recorded something in my room at 1am. not sure what it is yet. posting it anyway because i think keeping things to yourself until they are perfect is a trap.</p>
-      </div>
-      <span class="entry-tag">music</span>
-    </article>
+        <div class="entry-img">
+          <img src="img1.jpeg" alt="Ingredients" />
+        </div>
 
-  </main>
+        <div class="ingredient-list">
+          <div class="ingredient-item"><span class="clover">♣</span><span>Everything bagel</span></div>
+          <div class="ingredient-item"><span class="clover">♣</span><span>Cucumber</span></div>
+          <div class="ingredient-item"><span class="clover">♣</span><span>Tomato</span></div>
+          <div class="ingredient-item"><span class="clover">♣</span><span>Cilantro</span></div>
+          <div class="ingredient-item"><span class="clover">♣</span><span>Egg</span></div>
+          <div class="ingredient-item"><span class="clover">♣</span><span>Turkey bacon</span></div>
+          <div class="ingredient-item"><span class="clover">♣</span><span>Beef bologna</span></div>
+          <div class="ingredient-item"><span class="clover">♣</span><span>Usually cream cheese</span></div>
+          <div class="ingredient-item"><span class="clover">♣</span><span>Salt</span></div>
+          <div class="ingredient-item"><span class="clover">♣</span><span>Pepper</span></div>
+          <div class="ingredient-item"><span class="clover">♣</span><span>Sheer Chai (Milk Tea)</span></div>
+        </div>
 
-  <footer>
-    Lucky &nbsp;·&nbsp; <a href="#">luckyvintageny</a> &nbsp;·&nbsp; all rights reserved
-  </footer>
+        <div class="entry-img">
+          <img src="img2.jpeg" alt="Open bagel" />
+        </div>
+
+        <div class="entry-img">
+          <img src="img3.jpeg" alt="Closed bagel" />
+        </div>
+
+        <div class="entry-body" style="margin-top: 18px;">
+          <p>I encourage you to try. Send me a picture if you do.</p>
+        </div>
+      </article>
+
+    </main>
+
+    <footer>
+      Lucky &nbsp;·&nbsp; <a href="https://www.instagram.com/luckyvintageny" target="_blank">luckyvintageny</a>
+    </footer>
+  </div>
+
+  <script>
+    function showBlog(month) {
+      document.getElementById('landing').style.display = 'none';
+      document.getElementById('blog').style.display = 'block';
+      document.getElementById('current-month').textContent = month;
+      window.scrollTo(0, 0);
+    }
+
+    function showLanding() {
+      document.getElementById('blog').style.display = 'none';
+      document.getElementById('landing').style.display = 'flex';
+      window.scrollTo(0, 0);
+    }
+  </script>
 
 </body>
 </html>
