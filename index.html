@@ -8,7 +8,7 @@
   <meta property="og:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYzMCIgdmlld0JveD0iMCAwIDEyMDAgNjMwIj4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9IndoaXRlIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzNjAiIGZvbnQtc2l6ZT0iMzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmaWxsPSJibGFjayI+4pmjPC90ZXh0Pgo8L3N2Zz4=" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lucky</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♣</text></svg>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,7 +27,7 @@
     }
 
     .landing-top {
-      font-family: 'EB Garamond', serif;
+      font-family: 'IM Fell English', serif;
       font-size: 96px;
       font-weight: 400;
       line-height: 1;
@@ -79,8 +79,8 @@
     main {
       padding-top: 110px;
       max-width: 640px;
-      margin: 0 auto;
-      padding-left: 24px;
+      margin: 0;
+      padding-left: 56px;
       padding-right: 24px;
       padding-bottom: 120px;
     }
@@ -215,6 +215,33 @@
 
     footer a { color: #111; text-decoration: none; }
     footer a:hover { color: #111; }
+
+    .landing-web {
+      margin-top: 16px;
+      width: 340px;
+      margin-left: 0;
+      display: block;
+    }
+
+    #web-svg .node-dot {
+      transition: r 0.15s;
+    }
+
+    #web-svg .web-node:hover .node-dot {
+      r: 7;
+    }
+
+    #web-svg line {
+      transition: stroke-width 0.15s;
+    }
+
+    #web-svg line:hover {
+      stroke-width: 2;
+    }
+
+    #web-svg text {
+      user-select: none;
+    }
   </style>
 </head>
 <body>
@@ -222,9 +249,83 @@
   <!-- LANDING PAGE -->
   <div id="landing">
     <div class="landing-top">Lucky</div>
-    <div class="landing-month">
-      <button class="month-item" onclick="showBlog('June 2026')">→ June 2026</button>
+    <div class="landing-web">
+      <svg id="web-svg" viewBox="50 40 240 220" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Clover leaf paths (decorative, filled lightly) -->
+        <!-- Top-left leaf -->
+        <ellipse cx="118" cy="90" rx="38" ry="24" transform="rotate(-40 118 90)" fill="none" stroke="#111" stroke-width="0.4" opacity="0.3"/>
+        <!-- Top-right leaf -->
+        <ellipse cx="202" cy="90" rx="38" ry="24" transform="rotate(40 202 90)" fill="none" stroke="#111" stroke-width="0.4" opacity="0.3"/>
+        <!-- Bottom leaf -->
+        <ellipse cx="160" cy="162" rx="38" ry="24" transform="rotate(0 160 162)" fill="none" stroke="#111" stroke-width="0.4" opacity="0.3"/>
+
+        <!-- Stem removed -->
+
+        <!-- Interactive lines from center to nodes -->
+        <line id="line-blog" x1="160" y1="118" x2="100" y2="78" stroke="#111" stroke-width="0.8" style="cursor:pointer;" onclick="showSection('blog-dates')"/>
+        <line id="line-vintage" x1="160" y1="118" x2="220" y2="78" stroke="#111" stroke-width="0.8" style="cursor:pointer;" onclick="showSection('vintage')"/>
+        <line id="line-music" x1="160" y1="118" x2="160" y2="170" stroke="#111" stroke-width="0.8" style="cursor:pointer;" onclick="showSection('music')"/>
+
+        <!-- Center dot -->
+        <circle cx="160" cy="118" r="2.5" fill="#111"/>
+
+        <!-- Blog node (top-left leaf) -->
+        <g class="web-node" onclick="showSection('blog-dates')" style="cursor:pointer;">
+          <circle cx="100" cy="78" r="4" fill="#111" class="node-dot"/>
+          <text x="72" y="58" text-anchor="middle" font-family="EB Garamond, serif" font-size="12" fill="#111">Blog</text>
+        </g>
+
+        <!-- luckyvintageny node (top-right leaf) -->
+        <g class="web-node" onclick="showSection('vintage')" style="cursor:pointer;">
+          <circle cx="220" cy="78" r="4" fill="#111" class="node-dot"/>
+          <text x="252" y="58" text-anchor="middle" font-family="EB Garamond, serif" font-size="12" fill="#111">luckyvintageny</text>
+        </g>
+
+        <!-- Music node (bottom leaf) -->
+        <g class="web-node" onclick="showSection('music')" style="cursor:pointer;">
+          <circle cx="160" cy="170" r="4" fill="#111" class="node-dot"/>
+          <text x="160" y="210" text-anchor="middle" font-family="EB Garamond, serif" font-size="12" fill="#111">Music</text>
+        </g>
+
+      </svg>
     </div>
+  </div>
+
+  <!-- BLOG DATES PAGE -->
+  <div id="blog-dates" style="display:none;">
+    <div style="padding: 52px 56px; min-height:100vh; display:block;">
+      <div class="landing-top" onclick="showLanding()" style="cursor:pointer;">Lucky</div>
+      <div class="landing-month">
+        <button class="month-item" onclick="showBlog('June 2026')">→ June 2026</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VINTAGE PAGE -->
+  <div id="vintage" style="display:none;">
+    <nav>
+      <span class="site-title" onclick="showLanding()">Lucky</span>
+    </nav>
+    <main>
+      <div class="month-heading">luckyvintageny</div>
+      <div style="display:flex;gap:24px;margin-bottom:40px;">
+        <a href="https://www.instagram.com/luckyvintageny" target="_blank" style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;text-decoration:none;">→ Instagram</a>
+        <a href="https://www.depop.com/luckyvintageny" target="_blank" style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;text-decoration:none;">→ Depop</a>
+      </div>
+      <p style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;">[Coming soon]</p>
+    </main>
+  </div>
+
+  <!-- MUSIC PAGE -->
+  <div id="music" style="display:none;">
+    <nav>
+      <span class="site-title" onclick="showLanding()">Lucky</span>
+    </nav>
+    <main>
+      <div class="month-heading">Music</div>
+      <p style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;">[Coming soon]</p>
+    </main>
   </div>
 
   <!-- BLOG PAGE -->
@@ -405,15 +506,30 @@
   </div>
 
   <script>
+    const sections = ['landing', 'blog-dates', 'vintage', 'music', 'blog'];
+
+    function hideAll() {
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+    }
+
+    function showSection(id) {
+      hideAll();
+      document.getElementById(id).style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
     function showBlog(month) {
-      document.getElementById('landing').style.display = 'none';
+      hideAll();
       document.getElementById('blog').style.display = 'block';
       document.getElementById('current-month').textContent = month;
       window.scrollTo(0, 0);
     }
 
     function showLanding() {
-      document.getElementById('blog').style.display = 'none';
+      hideAll();
       document.getElementById('landing').style.display = 'block';
       window.scrollTo(0, 0);
     }
