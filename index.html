@@ -8,7 +8,7 @@
   <meta property="og:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYzMCIgdmlld0JveD0iMCAwIDEyMDAgNjMwIj4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9IndoaXRlIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzNjAiIGZvbnQtc2l6ZT0iMzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmaWxsPSJibGFjayI+4pmjPC90ZXh0Pgo8L3N2Zz4=" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lucky</title>
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♣</text></svg>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,7 +27,7 @@
     }
 
     .landing-top {
-      font-family: 'IM Fell English', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 96px;
       font-weight: 400;
       line-height: 1;
@@ -40,7 +40,7 @@
     }
 
     .month-item {
-      font-family: 'DM Mono', monospace;
+      font-family: 'EB Garamond', serif;
       font-size: 12px;
       color: #111;
       text-decoration: none;
@@ -69,8 +69,8 @@
     }
 
     nav .site-title {
-      font-family: 'IM Fell English', serif;
-      font-size: 1.15rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.45rem;
       text-decoration: none;
       color: #111;
       cursor: pointer;
@@ -86,9 +86,9 @@
     }
 
     .month-heading {
-      font-family: 'DM Mono', monospace;
+      font-family: 'EB Garamond', serif;
       font-size: 0.72rem;
-      color: #bbb;
+      color: #111;
       letter-spacing: 0.08em;
       margin-bottom: 56px;
     }
@@ -108,22 +108,22 @@
     }
 
     .entry-date {
-      font-family: 'DM Mono', monospace;
+      font-family: 'EB Garamond', serif;
       font-size: 0.68rem;
-      color: #bbb;
-      margin-bottom: 10px;
+      color: #111;
+      margin-bottom: 18px;
       letter-spacing: 0.04em;
     }
 
     .entry-title {
-      font-family: 'IM Fell English', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 1.05rem;
       font-weight: 400;
       margin-bottom: 14px;
     }
 
     .entry-body {
-      font-family: 'IM Fell English', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 0.95rem;
       line-height: 1.25;
       color: #333;
@@ -157,17 +157,17 @@
       margin-top: 14px;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 0;
     }
 
     .ingredient-item {
       display: flex;
-      gap: 10px;
+      gap: 4px;
       align-items: baseline;
-      font-family: 'IM Fell English', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 0.95rem;
       color: #333;
-      line-height: 1.25;
+      line-height: 1.1;
     }
 
     .ingredient-item .clover {
@@ -191,7 +191,7 @@
 
     .divider {
       border: none;
-      font-family: 'IM Fell English', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 0.85rem;
       color: #111;
       letter-spacing: 0.15em;
@@ -200,20 +200,20 @@
     }
 
     .divider::after {
-      content: '+ = + = + = + = + = + = + = +';
+      content: '· · · · · · · · · · · · · · ·';
     }
 
     footer {
       text-align: center;
-      padding: 40px 24px;
+      padding: 80px 24px;
       border-top: 1px solid #eee;
-      font-family: 'DM Mono', monospace;
+      font-family: 'EB Garamond', serif;
       font-size: 0.68rem;
-      color: #bbb;
+      color: #111;
       letter-spacing: 0.04em;
     }
 
-    footer a { color: #bbb; text-decoration: none; }
+    footer a { color: #111; text-decoration: none; }
     footer a:hover { color: #111; }
   </style>
 </head>
@@ -236,15 +236,32 @@
     <main>
       <div class="month-heading" id="current-month"></div>
 
+            <!-- POST 5 (newest) -->
+      <article class="entry">
+        <div class="entry-date">06.03.26</div>
+        <h2 class="entry-title">Pinky Promise.</h2>
+
+        <div class="entry-img"><img src="Tree_Stump_Plus.jpg" alt="Tree stump" /></div>
+
+        <div class="entry-body">
+          <p>I am at a crossroads in my life right now.</p>
+          <p>Recently, I think about the people who exist in memory only.</p>
+          <p>Your names still carry weight in my mind. They hum in my guitar strings, and linger around our favorite spots.</p>
+          <p>Still — I am grateful.</p>
+        </div>
+      </article>
+
+      <div class="divider"></div>
+
       <!-- POST 4 (newest) -->
       <article class="entry">
-        <div class="entry-date">06 02 2026</div>
+        <div class="entry-date">06.02.26</div>
         <h2 class="entry-title">Breathe.</h2>
         <div class="entry-body">
           <p>I met one million people today. I shook so many hands. Managed to stay on top of my water consumption though. Got like five bottles in today.</p>
           <p>The wind kept blowing dust in my eyes when I was outside. A few tree nuts hit my head, I think maybe three. Lowkey hurt.</p>
           <p>I'm ready to cook tomorrow. My friends and I spent $159.37 at the grocery store today.</p>
-          <div class="ingredient-list" style="margin-top:0; gap:2px;">
+          <div class="ingredient-list" style="margin-top:0; gap:0;">
             <div class="ingredient-item"><span class="clover">♣</span><span>Favorite purchase: Honey Greek Vanilla Yogurt</span></div>
             <div class="ingredient-item"><span class="clover">♣</span><span>Close second: Rice Pudding</span></div>
           </div>
@@ -253,10 +270,10 @@
           <p>Let's do box breathing before sleep.</p>
           <p>Ready?</p>
           <div style="display:flex;flex-direction:column;gap:0;margin-top:12px;margin-bottom:12px;">
-            <p style="margin:0;">Inhale (One one thousand, two one thousand, three one thousand, four one thousand)</p>
-            <p style="margin:0;">Hold (One one thousand, two one thousand, three one thousand, four one thousand)</p>
-            <p style="margin:0;">Exhale (One one thousand, two one thousand, three one thousand, four one thousand)</p>
-            <p style="margin:0;">Hold (One one thousand, two one thousand, three one thousand, four one thousand)</p>
+            <p style="margin:0;">[ in · · · · ]</p>
+            <p style="margin:0;">[ hold · · · · ]</p>
+            <p style="margin:0;">[ out · · · · ]</p>
+            <p style="margin:0;">[ hold · · · · ]</p>
           </div>
           <p>Repeat a couple times.</p>
           <p>Goodnight now.</p>
@@ -268,7 +285,7 @@
       <!-- POST 3 (newest) -->
       <!-- POST 3 -->
       <article class="entry">
-        <div class="entry-date">06 01 2026</div>
+        <div class="entry-date">06.01.26</div>
         <h2 class="entry-title">Stop 1, Stop 2, Stop 3.</h2>
         <div class="entry-body">
           <p>I just took two ibuprofen. My head is pounding.</p>
@@ -322,7 +339,7 @@
 <!-- POST 1 (oldest) -->
       <!-- POST 1 -->
       <article class="entry">
-        <div class="entry-date">06 01 2026</div>
+        <div class="entry-date">06.01.26</div>
         <h2 class="entry-title">Dad's Bagel.</h2>
         <div class="entry-body">
           <p>Dad made me this for the first time many years ago. I'll never forget. Now I make it when the fridge cooperates.</p>
@@ -332,8 +349,8 @@
           <img src="img1.jpeg" alt="Ingredients" />
         </div>
 
-        <div class="entry-body" style="margin-top:18px;"><p>Ingredients:</p></div>
-        <div class="ingredient-list">
+        <div class="entry-body" style="margin-top:18px;margin-bottom:0;"><p>Ingredients:</p></div>
+        <div class="ingredient-list" style="margin-top:0;">
           <div class="ingredient-item"><span class="clover">♣</span><span>Everything bagel</span></div>
           <div class="ingredient-item"><span class="clover">♣</span><span>Cucumber</span></div>
           <div class="ingredient-item"><span class="clover">♣</span><span>Tomato</span></div>
@@ -366,7 +383,7 @@
 <!-- POST 2 -->
       <!-- POST 2 -->
       <article class="entry">
-        <div class="entry-date">06 01 2026</div>
+        <div class="entry-date">06.01.26</div>
         <h2 class="entry-title">Hello World.</h2>
         <div class="entry-body">
           <p>I've been feeling very sentimental these days. Some days more than others. It's easy to forget what makes you, you.</p>
