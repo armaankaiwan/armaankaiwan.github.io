@@ -309,7 +309,6 @@
       <span class="site-title" onclick="showLanding()">Lucky</span>
     </nav>
     <main>
-      <div class="month-heading">luckyvintageny</div>
       <div style="display:flex;gap:24px;margin-bottom:40px;">
         <a href="https://www.instagram.com/luckyvintageny" target="_blank" style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;text-decoration:none;">→ Instagram</a>
         <a href="https://www.depop.com/luckyvintageny" target="_blank" style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;text-decoration:none;">→ Depop</a>
@@ -324,7 +323,6 @@
       <span class="site-title" onclick="showLanding()">Lucky</span>
     </nav>
     <main>
-      <div class="month-heading">Music</div>
       <p style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;">[Coming soon]</p>
     </main>
   </div>
@@ -336,7 +334,6 @@
     </nav>
 
     <main>
-      <div class="month-heading" id="current-month"></div>
 
             <!-- POST 5 (newest) -->
       <article class="entry">
@@ -525,7 +522,8 @@
     function showBlog(month) {
       hideAll();
       document.getElementById('blog').style.display = 'block';
-      document.getElementById('current-month').textContent = month;
+      const el = document.getElementById('current-month');
+      if (el) el.textContent = month;
       window.scrollTo(0, 0);
     }
 
