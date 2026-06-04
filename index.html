@@ -50,6 +50,7 @@
       background: none;
       border: none;
       padding: 0;
+      line-height: 1;
     }
 
     .month-item:hover { opacity: 0.4; }
@@ -109,7 +110,7 @@
 
     .entry-date {
       font-family: 'EB Garamond', serif;
-      font-size: 0.68rem;
+      font-size: 0.95rem;
       color: #111;
       margin-bottom: 18px;
       letter-spacing: 0.04em;
@@ -296,8 +297,8 @@
   <div id="blog-dates" style="display:none;">
     <div style="padding: 52px 56px; min-height:100vh; display:block;">
       <div class="landing-top" onclick="showLanding()" style="cursor:pointer;">Lucky</div>
-      <div class="landing-month">
-        <button class="month-item" onclick="showBlog('June 2026')">→ June 2026</button>
+      <div style="margin-top: 2px;">
+        <button onclick="showBlog('June 2026')" style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;background:none;border:none;padding:0;cursor:pointer;transition:opacity 0.15s;letter-spacing:0.03em;" onmouseover="this.style.opacity='0.4'" onmouseout="this.style.opacity='1'">→ June 2026</button>
       </div>
     </div>
   </div>
