@@ -297,9 +297,9 @@
   <div id="blog-dates" style="display:none;">
     <div style="padding: 52px 56px; min-height:100vh; display:block;">
       <div class="landing-top" onclick="showLanding()" style="cursor:pointer;">Lucky</div>
-      <div style="margin-top: 2px;">
-        <button onclick="showBlog('July 2026')" style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;background:none;border:none;padding:0;cursor:pointer;transition:opacity 0.15s;letter-spacing:0.03em;" onmouseover="this.style.opacity='0.4'" onmouseout="this.style.opacity='1'">→ July 2026</button>
-        <button onclick="showBlog('June 2026')" style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;background:none;border:none;padding:0;cursor:pointer;transition:opacity 0.15s;letter-spacing:0.03em;" onmouseover="this.style.opacity='0.4'" onmouseout="this.style.opacity='1'">→ June 2026</button>
+      <div style="margin-top: 2px; display:flex; flex-direction:column; gap:4px;">
+        <button onclick="showBlog('July 2026')" style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;background:none;border:none;padding:0;cursor:pointer;transition:opacity 0.15s;letter-spacing:0.03em;text-align:left;" onmouseover="this.style.opacity='0.4'" onmouseout="this.style.opacity='1'">→ July 2026</button>
+        <button onclick="showBlog('June 2026')" style="font-family:'EB Garamond',serif;font-size:0.95rem;color:#111;background:none;border:none;padding:0;cursor:pointer;transition:opacity 0.15s;letter-spacing:0.03em;text-align:left;" onmouseover="this.style.opacity='0.4'" onmouseout="this.style.opacity='1'">→ June 2026</button>
       </div>
     </div>
   </div>
@@ -336,7 +336,7 @@
 
     <main>
 
-                  <!-- JULY 2026 -->
+      <div id="month-july-2026" class="month-section">
 
       <!-- POST: 07.06.26 -->
       <article class="entry">
@@ -400,7 +400,9 @@
 
       <div class="divider"></div>
 
-      <!-- JUNE 2026 -->
+      </div>
+
+      <div id="month-june-2026" class="month-section" style="display:none;">
 
             <!-- POST: 06.27.26 -->
       <article class="entry">
@@ -752,6 +754,8 @@
         </div>
       </article>
 
+      </div>
+
           </main>
 
     <footer>
@@ -778,16 +782,55 @@
     function showBlog(month) {
       hideAll();
       document.getElementById('blog').style.display = 'block';
-      const el = document.getElementById('current-month');
-      if (el) el.textContent = month;
+      document.querySelectorAll('.month-section').forEach(el => el.style.display = 'none');
+      const key = 'month-' + month.toLowerCase().replace(' ', '-');
+      const section = document.getElementById(key);
+      if (section) section.style.display = 'block';
+      history.pushState({ page: 'blog', month: month }, '', '');
+      window.scrollTo(0, 0);
+    }
+
+    function showSection(id) {
+      hideAll();
+      document.getElementById(id).style.display = 'block';
+      history.pushState({ page: id }, '', '');
       window.scrollTo(0, 0);
     }
 
     function showLanding() {
       hideAll();
       document.getElementById('landing').style.display = 'block';
+      history.pushState({ page: 'landing' }, '', '');
       window.scrollTo(0, 0);
     }
+
+    function showBlogDates() {
+      hideAll();
+      document.getElementById('blog-dates').style.display = 'block';
+      history.pushState({ page: 'blog-dates' }, '', '');
+      window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('popstate', function(e) {
+      const state = e.state;
+      if (!state) { showLanding(); return; }
+      hideAll();
+      if (state.page === 'landing') {
+        document.getElementById('landing').style.display = 'block';
+      } else if (state.page === 'blog-dates') {
+        document.getElementById('blog-dates').style.display = 'block';
+      } else if (state.page === 'blog') {
+        document.getElementById('blog').style.display = 'block';
+        document.querySelectorAll('.month-section').forEach(el => el.style.display = 'none');
+        const key = 'month-' + state.month.toLowerCase().replace(' ', '-');
+        const section = document.getElementById(key);
+        if (section) section.style.display = 'block';
+      } else {
+        const el = document.getElementById(state.page);
+        if (el) el.style.display = 'block';
+      }
+      window.scrollTo(0, 0);
+    });
   </script>
 
 </body>
