@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>luckyvintageny</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff;
+      color: #111;
+      font-family: 'EB Garamond', serif;
+      min-height: 100vh;
+      padding: 52px 56px 80px;
+    }
+
+    .page-title {
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .page-links {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 48px;
+      font-size: 13px;
+    }
+
+    .page-links a {
+      color: #111;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 32px 20px 60px; }
+      .grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    }
+
+    /* CARD */
+    .card {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .card-cover {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      background: #f5f5f5;
+    }
+
+    .card-info {
+      padding: 6px 0 0;
+    }
+
+    .card-name {
+      font-size: 11px;
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+
+    .card-meta {
+      font-size: 10px;
+      color: #888;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-status {
+      font-size: 10px;
+      font-style: italic;
+    }
+
+    .card-status.sold { color: #aaa; }
+    .card-status.available { color: #111; }
+    .card-status.nfs { color: #aaa; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.97);
+      z-index: 1000;
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    .lightbox.active { display: flex; flex-direction: column; }
+
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      font-family: 'EB Garamond', serif;
+      font-size: 20px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #111;
+      z-index: 1001;
+    }
+
+    .lightbox-title {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .lightbox-meta {
+      font-size: 12px;
+      color: #888;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .lightbox-images {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .lightbox { padding: 20px; }
+      .lightbox-images { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .lightbox-images img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      background: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-title">luckyvintageny</div>
+  <div class="page-links">
+    <a href="https://www.instagram.com/luckyvintageny" target="_blank">→ Instagram</a>
+    <a href="https://www.depop.com/luckyvintageny" target="_blank">→ Depop</a>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-title" id="lb-title"></div>
+    <div class="lightbox-meta" id="lb-meta"></div>
+    <div class="lightbox-images" id="lb-images"></div>
+  </div>
+
+  <script>
+    const items = [
+      {
+        name: "Blanket Lined Aztec Bomber, Made in USA",
+        size: "M",
+        price: "$40",
+        status: "sold",
+        images: ["v1_1.PNG","v1_2.PNG","v1_3.JPG"]
+      },
+      {
+        name: "Diesel \"Only the Brave\" Black Leather Belt",
+        size: "40",
+        price: "$40",
+        status: "sold",
+        images: ["v2_1.PNG","v2_2.PNG","v2_3.PNG"]
+      },
+      {
+        name: "1990s Carhartt Detroit J01BRN, Made in USA",
+        size: "L",
+        price: "$250",
+        status: "sold",
+        images: ["v3_1.PNG","v3_2.PNG","v3_3.PNG","v3_4.JPG"]
+      },
+      {
+        name: "1995 Tom Lyle Mega Print Spiderman on the Moon",
+        size: "XL",
+        price: "$500",
+        status: "sold",
+        images: ["v4_1.PNG","v4_2.PNG","v4_3.PNG","v4_4.PNG"]
+      },
+      {
+        name: "Diesel Zatiny Distressed Bootcut Jeans",
+        size: "30x32",
+        price: "$40",
+        status: "sold",
+        images: ["v5_1.png","v5_2.png","v5_3.png","v5_4.JPG","v5_5.JPG"]
+      },
+      {
+        name: "AW21 Bape Snow Pattern Full Zip Fleece",
+        size: "S",
+        price: "$200",
+        status: "sold",
+        images: ["v6_1.PNG","v6_2.PNG","v6_3.PNG","v6_4.PNG"]
+      },
+      {
+        name: "1996 Stanley Desantis Pink Panther",
+        size: "S",
+        price: "NFS",
+        status: "nfs",
+        images: ["v7_1.png","v7_2.png","v7_3.png","v7_4.png"]
+      },
+      {
+        name: "1980s Yves Saint Laurent Striped Button Up",
+        size: "XL",
+        price: "$50",
+        status: "sold",
+        images: ["v8_1.png","v8_2.png","v8_3.png"]
+      },
+      {
+        name: "Evisu High Top Logo Sneakers",
+        size: "US 11",
+        price: "$100",
+        status: "sold",
+        images: ["v9_1.png","v9_2.png","v9_3.png","v9_4.png"]
+      },
+      {
+        name: "Onitsuka Tiger Serrano Kill Bills",
+        size: "US 11",
+        price: "$75",
+        status: "sold",
+        images: ["v10_1.png","v10_2.png","v10_3.png","v10_4.png"]
+      },
+      {
+        name: "Alpinestars Black Label Leather Biking Jacket",
+        size: "S",
+        price: "$175",
+        status: "sold",
+        images: ["v11_1.png","v11_2.png","v11_3.png","v11_4.png","v11_5.JPG"]
+      },
+      {
+        name: "1990s Polo Ralph Lauren Black Leather Jacket",
+        size: "XL",
+        price: "$185",
+        status: "sold",
+        images: ["v12_1.png","v12_2.png","v12_3.png","v12_4.png"]
+      },
+      {
+        name: "Studded Low Rise Rock & Roll Cowgirl Bootcut Jeans",
+        size: "26x34",
+        price: "$50",
+        status: "sold",
+        images: ["v13_1.png","v13_2.png","v13_3.png","v13_4.png","v13_5.png"]
+      },
+    ];
+
+    const grid = document.getElementById('grid');
+
+    items.forEach((item, i) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.onclick = () => openLightbox(i);
+      card.innerHTML = `
+        <img class="card-cover" src="${item.images[0]}" alt="${item.name}" loading="lazy"/>
+        <div class="card-info">
+          <div class="card-name">${item.name}</div>
+          <div class="card-meta">
+            <span>${item.size}</span>
+            <span class="card-status ${item.status}">${item.status === 'nfs' ? 'NFS' : item.status === 'sold' ? 'Sold ' + item.price : item.price}</span>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    function openLightbox(i) {
+      const item = items[i];
+      document.getElementById('lb-title').textContent = item.name;
+      document.getElementById('lb-meta').textContent = `Size ${item.size} · ${item.status === 'nfs' ? 'NFS' : item.status === 'sold' ? 'Sold · ' + item.price : item.price}`;
+      const imgs = document.getElementById('lb-images');
+      imgs.innerHTML = item.images.map(src => `<img src="${src}" alt="${item.name}" loading="lazy"/>`).join('');
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
