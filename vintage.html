@@ -87,6 +87,7 @@
     .card-status.sold { color: #aaa; }
     .card-status.available { color: #111; }
     .card-status.nfs { color: #aaa; }
+    .card-status.traded { color: #aaa; }
 
     /* LIGHTBOX */
     .lightbox {
@@ -166,6 +167,111 @@
 
   <script>
     const items = [
+      {
+        name: "Rock Revival \"Jacopo Boot\" Bootcut Jeans",
+        size: "30x31",
+        price: "$60",
+        status: "sold",
+        images: ["v28_1.JPG","v28_2.JPG","v28_3.JPG","v28_4.JPG","v28_5.JPG"]
+      },
+      {
+        name: "1990s Hysteric Glamour Top",
+        size: "S",
+        price: "$100",
+        status: "sold",
+        images: ["v27_1.JPG","v27_2.JPG","v27_3.JPG","v27_4.JPG"]
+      },
+      {
+        name: "SS21 Maison Margiela Tabi Flip Flops",
+        size: "Women's 6.5",
+        price: "$150",
+        status: "sold",
+        images: ["v26_1.JPG","v26_2.JPG","v26_3.JPG","v26_4.JPG","v26_5.JPG"]
+      },
+      {
+        name: "1980s West Point USMA Champion Ringer Tee",
+        size: "S",
+        price: "$30",
+        status: "sold",
+        images: ["v25_1.JPG","v25_2.JPG","v25_3.JPG"]
+      },
+      {
+        name: "SS06 Undercover \"Hagi\" Long Sleeve Tee",
+        size: "S",
+        price: "$120",
+        status: "sold",
+        images: ["v24_1.JPG","v24_2.JPG","v24_3.JPG","v24_4.JPG","v24_5.JPG"]
+      },
+      {
+        name: "Billabong Andy Irons Samurai Signature Board Shorts",
+        size: "34",
+        price: "",
+        status: "traded",
+        images: ["v23_1.JPG","v23_2.JPG","v23_3.JPG","v23_4.JPG"]
+      },
+      {
+        name: "1960s Arizona State Lacrosse Tee",
+        size: "S",
+        price: "$250",
+        status: "sold",
+        images: ["v22_1.png","v22_2.png","v22_3.png","v22_4.png"]
+      },
+      {
+        name: "Polo Ralph Lauren Tiger Denim Jacket",
+        size: "S",
+        price: "$150",
+        status: "sold",
+        images: ["v21_1.png","v21_2.png","v21_3.png","v21_4.png","v21_5.JPG"]
+      },
+      {
+        name: "1980s Coors Supercross Single Stitch Tee",
+        size: "L",
+        price: "$45",
+        status: "sold",
+        images: ["v20_1.JPG","v20_2.JPG"]
+      },
+      {
+        name: "1970s Flagstaff Single Stitch Tee",
+        size: "M",
+        price: "$30",
+        status: "sold",
+        images: ["v19_1.png","v19_2.png"]
+      },
+      {
+        name: "WW2 US Navy Wool Sailor's Uniform",
+        size: "M",
+        price: "$35",
+        status: "sold",
+        images: ["v18_1.png","v18_2.png","v18_3.png","v18_4.JPG"]
+      },
+      {
+        name: "1980s Harley Davidson of New York City Tee",
+        size: "S",
+        price: "$150",
+        status: "sold",
+        images: ["v17_1.png","v17_2.png","v17_3.png"]
+      },
+      {
+        name: "Old Navy Polka Dot Zip Hoodie",
+        size: "S",
+        price: "$25",
+        status: "sold",
+        images: ["v16_1.png","v16_2.png","v16_3.png","v16_4.png","v16_5.JPG"]
+      },
+      {
+        name: "2000s Arc'teryx Atom Zip Jacket",
+        size: "M",
+        price: "$120",
+        status: "sold",
+        images: ["v15_1.png","v15_2.png","v15_3.png","v15_4.png","v15_5.JPG"]
+      },
+      {
+        name: "1980s Marlboro Hoodie, Made in USA",
+        size: "M",
+        price: "$60",
+        status: "sold",
+        images: ["v14_1.png","v14_2.JPG","v14_3.png"]
+      },
       {
         name: "Studded Low Rise Rock & Roll Cowgirl Bootcut Jeans",
         size: "26x34",
@@ -271,7 +377,7 @@
           <div class="card-name">${item.name}</div>
           <div class="card-meta">
             <span>${item.size}</span>
-            <span class="card-status ${item.status}">${item.status === 'nfs' ? 'NFS' : item.status === 'sold' ? 'Sold ' + item.price : item.price}</span>
+            <span class="card-status ${item.status}">${item.status === 'nfs' ? 'NFS' : item.status === 'traded' ? 'Traded' : item.status === 'sold' ? 'Sold ' + item.price : item.price}</span>
           </div>
         </div>
       `;
@@ -281,7 +387,7 @@
     function openLightbox(i) {
       const item = items[i];
       document.getElementById('lb-title').textContent = item.name;
-      document.getElementById('lb-meta').textContent = `Size ${item.size} · ${item.status === 'nfs' ? 'NFS' : item.status === 'sold' ? 'Sold · ' + item.price : item.price}`;
+      document.getElementById('lb-meta').textContent = `Size ${item.size} · ${item.status === 'nfs' ? 'NFS' : item.status === 'traded' ? 'Traded' : item.status === 'sold' ? 'Sold · ' + item.price : item.price}`;
       const imgs = document.getElementById('lb-images');
       imgs.innerHTML = item.images.map(src => `<img src="${src}" alt="${item.name}" loading="lazy"/>`).join('');
       document.getElementById('lightbox').classList.add('active');
